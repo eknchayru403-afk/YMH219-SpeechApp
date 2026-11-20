@@ -15,6 +15,12 @@ Bu proje, C# Windows Forms (.NET 10.0) ve `System.Speech` kütüphanesi kullanı
 * **Canlı İşlem Durumu Göstergesi:** Arayüzün üst bölümünde aktif çalışan mod (Seslendirme, Duraklatıldı, Mikrofon Dinleniyor, Hata) renk kodlu durum çubuğuyla anlık gösterilir.
 * **Zaman Damgası ve Dosya Dışa Aktarımı:** Konuşma tanıma sonuçları `[HH:mm:ss]` saat bilgisiyle listelenir ve tek tıkla `.txt` dosyası olarak dışa aktarılabilir.
 
+## Bilinen Sınırlamalar ve Geliştirme Notları
+
+* Masaüstü `.NET System.Speech` (SAPI 5) altyapısı Windows işletim sisteminde yüklü olan yerel dil ve ses paketlerine bağlıdır; Türkçe konuşma tanıma paketi Windows masaüstü SAPI motorunda yerleşik bulunmadığından İngilizce (`en-US`) tanıma modeli kullanılmaktadır.
+* Mikrofon donanımı bulunmayan veya ses hizmeti devre dışı olan sistemlerde konuşma tanıma özelliği çalışmaz ve kullanıcıya hata uyarısı gösterilir.
+
+* 
 ## Kurulum ve Çalıştırma
 
 1. Depoyu bilgisayarınıza klonlayın:
