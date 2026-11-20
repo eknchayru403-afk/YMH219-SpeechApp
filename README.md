@@ -1,44 +1,22 @@
-\# YMH 219 - Speech-to-Text ve Text-to-Speech Uygulaması
+# YMH 219 - Speech-to-Text ve Text-to-Speech Uygulaması
 
+* **Öğrenci Adı Soyadı:** Hayrunnisa Ekinci
+* **Öğrenci Numarası:** 240541043
+* **Ders:** YMH 219 - Görsel Programlama / Nesne Yönelimli Programlama
 
+## Proje Hakkında
 
-\* \*\*Öğrenci Adı Soyadı:\*\* Hayrunnisa Ekinci
+Bu proje, C# Windows Forms (.NET 10.0) ve `System.Speech` kütüphanesi kullanılarak geliştirilmiş; yazılı metni sesli olarak okuyan (**Text-to-Speech**) ve mikrofondan alınan konuşmayı zaman damgalı metne dönüştüren (**Speech-to-Text**) nesne yönelimli bir masaüstü uygulamasıdır.
 
-\* \*\*Öğrenci Numarası:\*\* 240541043
+## Temel Özellikler & OOP Mimarisi
 
-\* \*\*Ders:\*\* YMH 219 - Görsel Programlama / Nesne Yönelimli Programlama
+* **Text-to-Speech Servisi (`TextToSpeechService` Sınıfı):** `SpeechSynthesizer` bileşenini kapsüller; sistemde yüklü ses profillerini listeleme, konuşma hızı ayarı (`-10` ile `+10` arası), asenkron seslendirme (`SpeakAsync`), duraklatma/devam ettirme, durdurma ve `IDisposable` kaynak temizliği sağlar.
+* **Speech-to-Text Servisi (`SpeechToTextService` Sınıfı):** `SpeechRecognitionEngine` altyapısını kapsüller; mikrofon ses girişini sürekli dinleme modunda (`RecognizeMode.Multiple`) işler, tanınan konuşmaları olay tabanlı (`Action<string>`) olarak arayüze iletir ve donanım/servis hatalarını güvenli biçimde yakalar.
+* **Canlı İşlem Durumu Göstergesi:** Arayüzün üst bölümünde aktif çalışan mod (Seslendirme, Duraklatıldı, Mikrofon Dinleniyor, Hata) renk kodlu durum çubuğuyla anlık gösterilir.
+* **Zaman Damgası ve Dosya Dışa Aktarımı:** Konuşma tanıma sonuçları `[HH:mm:ss]` saat bilgisiyle listelenir ve tek tıkla `.txt` dosyası olarak dışa aktarılabilir.
 
+## Kurulum ve Çalıştırma
 
-
-\## Proje Hakkında
-
-
-
-Bu proje, C# Windows Forms (.NET 10.0) ve `System.Speech` kütüphanesi kullanılarak geliştirilmiş; yazılı metni sesli olarak okuyan (\*\*Text-to-Speech\*\*) ve mikrofondan alınan konuşmayı zaman damgalı metne dönüştüren (\*\*Speech-to-Text\*\*) nesne yönelimli bir masaüstü uygulamasıdır.
-
-
-
-\## Temel Özellikler \& OOP Mimarisi
-
-
-
-\* \*\*Text-to-Speech Servisi (`TextToSpeechService` Sınıfı):\*\* `SpeechSynthesizer` bileşenini kapsüller; sistemde yüklü ses profillerini listeleme, konuşma hızı ayarı (`-10` ile `+10` arası), asenkron seslendirme (`SpeakAsync`), duraklatma/devam ettirme, durdurma ve `IDisposable` kaynak temizliği sağlar.
-
-\* \*\*Speech-to-Text Servisi (`SpeechToTextService` Sınıfı):\*\* `SpeechRecognitionEngine` altyapısını kapsüller; mikrofon ses girişini sürekli dinleme modunda (`RecognizeMode.Multiple`) işler, tanınan konuşmaları olay tabanlı (`Action<string>`) olarak arayüze iletir ve donanım/servis hatalarını güvenli biçimde yakalar.
-
-\* \*\*Canlı İşlem Durumu Göstergesi:\*\* Arayüzün üst bölümünde aktif çalışan mod (Seslendirme, Duraklatıldı, Mikrofon Dinleniyor, Hata) renk kodlu durum çubuğuyla anlık gösterilir.
-
-\* \*\*Zaman Damgası ve Dosya Dışa Aktarımı:\*\* Konuşma tanıma sonuçları `\[HH:mm:ss]` saat bilgisiyle listelenir ve tek tıkla `.txt` dosyası olarak dışa aktarılabilir.
-
-
-
-\## Kurulum ve Çalıştırma
-
-
-
-1\. Depoyu bilgisayarınıza klonlayın:
-
-&#x20;  ```bash
-
-&#x20;  git clone \[https://github.com/eknchayru403-afk/YMH219-SpeechApp.git](https://github.com/eknchayru403-afk/YMH219-SpeechApp.git)
-
+1. Depoyu bilgisayarınıza klonlayın:
+   ```bash
+   git clone https://github.com/eknchayru403-afk/YMH219-SpeechApp.git
