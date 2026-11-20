@@ -51,7 +51,24 @@ namespace YMH219_SpeechApp
             if (string.IsNullOrWhiteSpace(metin)) return;
 
             _sentezleyici.SpeakAsyncCancelAll();
-            _sentezleyici.SpeakAsync(metin);
+            _sentezleyici.SetOutputToDefaultAudioDevice();
+
+            // Yüklü ses Türkçe değilse (örn. Microsoft Zira Desktop) Türkçe karakterlerin okumayı durdurmaması için normalize et
+            string seciliDil = _sentezleyici.Voice?.Culture?.TwoLetterISOLanguageName ?? "en";
+            string okunacakMetin = seciliDil == "tr" ? metin : TurkceKarakterleriDuzelt(metin);
+
+            _sentezleyici.SpeakAsync(okunacakMetin);
+        }
+
+        private string TurkceKarakterleriDuzelt(string metin)
+        {
+            return metin
+                .Replace('ı', 'i').Replace('İ', 'I')
+                .Replace('ğ', 'g').Replace('Ğ', 'G')
+                .Replace('ü', 'u').Replace('Ü', 'U')
+                .Replace('ş', 's').Replace('Ş', 'S')
+                .Replace('ö', 'o').Replace('Ö', 'O')
+                .Replace('ç', 'c').Replace('Ç', 'C');
         }
 
         public void DuraklatVeyaDevamEt()
